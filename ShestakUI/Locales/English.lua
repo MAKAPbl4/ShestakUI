@@ -1,13 +1,6 @@
 ----------------------------------------------------------------------------------------
 --	Localization for enUS and enGB client
 ----------------------------------------------------------------------------------------
--- Announce your Lightwell
-L_ANNOUNCE_LA_USE = " used my lightwell. "
-L_ANNOUNCE_LA_CHARGE = " charge(s))"
-L_ANNOUNCE_LA_USELESS = " used my lightwell, uselessly. "
-L_ANNOUNCE_LA_PLACED = "Lightwell placed. "
-L_ANNOUNCE_LA_CHARGES = " charges."
-
 -- Announce flasks and food
 L_ANNOUNCE_FF_NOFOOD = "No Food: "
 L_ANNOUNCE_FF_NOFLASK = "No Flask: "
@@ -59,6 +52,7 @@ L_MISC_BINDER_OPEN = "Mouse Bindings"
 L_MISC_GROCERY_BUY = "Buy"
 L_MISC_GROCERY_DESC = "Automatically buy grocery bags"
 L_MISC_SCROLL = "Scroll"
+L_MISC_COLLAPSE = "The Collapse"
 
 -- Raid Utility
 L_RAID_UTIL_DISBAND = "Disband Group"
@@ -169,12 +163,6 @@ L_BIND_BINDING = "Binding"
 L_BIND_KEY = "Key"
 L_BIND_NO_SET = "No bindings set"
 
--- Talent spec
-L_PLANNER_DRUID_4 = "Restoration"
-L_PLANNER_MONK_2 = "Mistweaver"
-L_PLANNER_PALADIN_1 = "Holy"
-L_PLANNER_PRIEST_1 = "Discipline"
-
 -- BG stats
 L_DATATEXT_BASESASSAULTED = "Bases Assaulted:"
 L_DATATEXT_BASESDEFENDED = "Bases Defended:"
@@ -233,6 +221,7 @@ L_COMBATTEXT_TEST_ENABLED = "Combat text test mode enabled."
 L_COMBATTEXT_TEST_USE_UNLOCK = "Type /xct unlock to move and resize combat text frames."
 L_COMBATTEXT_TEST_USE_LOCK = "Type /xct lock to lock combat text frames."
 L_COMBATTEXT_TEST_USE_TEST = "Type /xct test to toggle combat text testmode."
+L_COMBATTEXT_TEST_USE_RESET = "Type /xct reset to restore default positions."
 L_COMBATTEXT_POPUP = "To save combat text window positions you need to reload your UI."
 L_COMBATTEXT_UNSAVED = "Combat text window positions unsaved, don't forget to reload UI."
 L_COMBATTEXT_UNLOCKED = "Combat text unlocked."

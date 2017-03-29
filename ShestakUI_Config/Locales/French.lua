@@ -40,6 +40,8 @@ L_GUI_MISC_CHARS_CURRENCY = "Affiche les jetons et autres monnaies de vos diffé
 L_GUI_MISC_ARMORY_LINK = "Ajouter un lien d'armurerie dans une fenêtre UnitPopupMenus (Cela casse les UnitPopupMenus)"
 L_GUI_MISC_MERCHANT_ITEMLEVEL = "Show item level for weapons and armor in merchant" -- Need review
 L_GUI_MISC_MINIMIZE_MOUSEOVER = "Mouseover for quest minimize button" -- Need review
+L_GUI_MISC_HIDE_BANNER = "Cacher la fenêtre/bannière de loot des Boss"
+L_GUI_MISC_HIDE_TALKING_HEAD = "Hide Talking Head Frame" -- Need review
 
 -- Announcements options
 L_GUI_ANNOUNCEMENTS = "Annonces"
@@ -47,7 +49,6 @@ L_GUI_ANNOUNCEMENTS_DRINKING = "Annonce dans la fenêtre de discussion quand un 
 L_GUI_ANNOUNCEMENTS_INTERRUPTS = "Annonce /gr, /raid si vous interrompez un sort"
 L_GUI_ANNOUNCEMENTS_SPELLS = "Annonce dans la fenêtre groupe/raid quand vous lancez certains sorts"
 L_GUI_ANNOUNCEMENTS_SPELLS_FROM_ALL = "Annonce les sorts lancés par tous les membres"
-L_GUI_ANNOUNCEMENTS_LIGHTWELL = "Annonce votre Puits de lumière"
 L_GUI_ANNOUNCEMENTS_TOY_TRAIN = "Annonce le lancement du sort Train électrique ou Télécommande navrebière"
 L_GUI_ANNOUNCEMENTS_SAYS_THANKS = "Dire merci pour certains sorts"
 L_GUI_ANNOUNCEMENTS_PULL_COUNTDOWN = "Annonce le compte à rebours pou Pull '/pc #'"
@@ -64,7 +65,6 @@ L_GUI_AUTOMATION = "Automatisation"
 L_GUI_AUTOMATION_RELEASE = "Autorésurrection en champ de bataille" -- Need review
 L_GUI_AUTOMATION_SCREENSHOT = "Prend une capture d'écran quand un haut-fait est accomplie"
 L_GUI_AUTOMATION_SOLVE_ARTIFACT = "Affiche automatiquement une fenêtre pour la résolution d'un artéfact"
-L_GUI_AUTOMATION_CHEFS_HAT = "Equipe automatiquement le Chapeau de cuisine"
 L_GUI_AUTOMATION_ACCEPT_INVITE = "Accepter automatiquement les invitations"
 L_GUI_AUTOMATION_DECLINE_DUEL = "Décliner les duels automatiquement"
 L_GUI_AUTOMATION_ACCEPT_QUEST = "Accepter les quêtes automatiquement"
@@ -78,7 +78,6 @@ L_GUI_AUTOMATION_LOGGING_COMBAT = "Active automatiquement l'enregistrement du jo
 L_GUI_AUTOMATION_CURRENCY_CAP = "Active automatiquement une fenêtre d'alerte quand une monnaie/jeton atteint sa valeur maximale"
 L_GUI_AUTOMATION_BUFF_ON_SCROLL = "Lancement de sort via la molette souris"
 L_GUI_AUTOMATION_OPEN_ITEMS = "Ouverture automatique des objets dans les sacs"
-L_GUI_AUTOMATION_BANNER_HIDE = "Cacher la fenêtre/bannière de loot des Boss"
 
 -- Skins options
 L_GUI_SKINS = "Personnalisation d'addon"
@@ -112,6 +111,11 @@ L_GUI_SKINS_VANASKOS = "Activer la personnalisation pour VanasKoS"
 L_GUI_SKINS_WEAK_AURAS = "Activer la personnalisation pour WeakAuras"
 L_GUI_SKINS_SKADA = "Activer la personnalisation pour Skada"
 L_GUI_SKINS_MY_ROLE_PLAY = "Activer la personnalisation pour MyRolePlay"
+L_GUI_SKINS_ARH = "Enable styling Archaeology Helper" -- Need review
+L_GUI_SKINS_POSTAL = "Enable styling Postal" -- Need review
+L_GUI_SKINS_OPIE = "Enable styling OPie" -- Need review
+L_GUI_SKINS_REMATCH = "Enable styling Rematch" -- Need review
+L_GUI_SKINS_LS_TOASTS = "Enable styling ls: Toasts" -- Need review
 
 -- Combat text options
 L_GUI_COMBATTEXT = "Texte de combat"
@@ -272,18 +276,22 @@ L_GUI_NAMEPLATE_HEALTH = "Valeur de points de vie"
 L_GUI_NAMEPLATE_CASTBAR = "Afficher la barre de sort"
 L_GUI_NAMEPLATE_HEIGHT = "Hauteur des barres de nom"
 L_GUI_NAMEPLATE_WIDTH = "Largeur des barres de nom"
+L_GUI_NAMEPLATE_DISTANCE = "Show nameplates for units within this range" -- Need review
 L_GUI_NAMEPLATE_AD_HEIGHT = "Hauteur additionnelle pour la barre de vie sélectionnée"
 L_GUI_NAMEPLATE_AD_WIDTH = "Largeur additionnelle pour la barre de vie sélectionnée"
 L_GUI_NAMEPLATE_CASTBAR_NAME = "Afficher le nom du sort"
 L_GUI_NAMEPLATE_THREAT = "Activer la gestion de la menace, change automatiquement selon votre rôle"
 L_GUI_NAMEPLATE_CLASS_ICON = "Icône de classe en JcJ"
 L_GUI_NAMEPLATE_NAME_ABBREV = "Afficher les noms abrégés"
+L_GUI_NAMEPLATE_CLAMP = "Clamp nameplates to the top of the screen when outside of view" -- Need review
 L_GUI_NAMEPLATE_GOOD_COLOR = "Bonne couleur de menace, dépend de si vous êtes un tank ou dps/heal"
 L_GUI_NAMEPLATE_NEAR_COLOR = "Perte/Gain de couleur de menace"
 L_GUI_NAMEPLATE_BAD_COLOR = "Mauvaise couleur de menace, dépend de si vous êtes un tank ou dps/heal"
+L_GUI_NAMEPLATE_OFFTANK_COLOR = "Offtank threat color" -- Need review
 L_GUI_NAMEPLATE_SHOW_DEBUFFS = "Affiche les affaiblissements (Les noms abrégés doivent être désactivés)"
 L_GUI_NAMEPLATE_DEBUFFS_SIZE = "Taille des affaiblissements"
 L_GUI_NAMEPLATE_HEALER_ICON = "Affiche une icône de soigneur sur toutes les barres de vie des soigneurs ennemis dans les champs de bataille"
+L_GUI_NAMEPLATE_TOTEM_ICONS = "Show icon above enemy totems nameplate" -- Need review
 
 -- ActionBar options
 L_GUI_ACTIONBAR_ENABLE = "Activer les barres d'action"
@@ -325,7 +333,7 @@ L_GUI_AURA_CAST_BY = "Voir qui a jeté un buff / debuff sur son tooltip"
 L_GUI_AURA_CLASSCOLOR_BORDER = "Active la couleur de votre classe pour la bordure de vos buffs"
 
 -- Filger
-L_GUI_FILGER = "Filger"
+L_GUI_FILGER = "Timers (Filger)" -- Need review
 L_GUI_FILGER_ENABLE = "Enable Filger" -- Need review
 L_GUI_FILGER_TEST_MODE = "Test icon mode" -- Need review
 L_GUI_FILGER_MAX_TEST_ICON = "The number of icons to the test" -- Need review
@@ -369,6 +377,7 @@ L_GUI_UF_PLUGINS_SWING = "Barre d'attaque automatique / tir automatique"
 L_GUI_UF_PLUGINS_REPUTATION_BAR = "Barre de réputation"
 L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "Barre d'expérience"
 L_GUI_UF_PLUGINS_FRIENDSHIP_BAR = "Barre de réputation/amitié"
+L_GUI_UF_PLUGINS_ARTIFACT_BAR = "Artifact Power bar" -- Need review
 L_GUI_UF_PLUGINS_SMOOTH_BAR = "Lissage des barres"
 L_GUI_UF_PLUGINS_ENEMY_SPEC = "Afficher les talent de l'ennemi"
 L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "Texte de combat sur les barres du joueur et de la cible"

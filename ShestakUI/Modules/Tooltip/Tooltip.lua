@@ -1,4 +1,4 @@
-﻿local T, C, L, _ = unpack(select(2, ...))
+local T, C, L, _ = unpack(select(2, ...))
 if C.tooltip.enable ~= true then return end
 
 ----------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ local tooltips = {
 	ItemRefTooltip,
 	ShoppingTooltip1,
 	ShoppingTooltip2,
-	WorldMapTooltip.BackdropFrame,
+	WorldMapTooltip,
 	WorldMapCompareTooltip1,
 	WorldMapCompareTooltip2,
 	FriendsTooltip,
@@ -46,6 +46,33 @@ for _, tt in pairs(tooltips) do
 		tt.GetBackdropBorderColor = function() return unpack(C.media.border_color) end
 	end
 end
+
+-- Extra tooltip's skin
+local frame = CreateFrame("Frame")
+frame:RegisterEvent("PLAYER_LOGIN")
+frame:SetScript("OnEvent", function(self, event, addon)
+	if not IsAddOnLoaded("Auc-Advanced") then return end
+
+	local LT = LibStub("LibExtraTip-1")
+	for _, Tooltip in pairs({GameTooltip, ItemRefTooltip}) do
+		Tooltip:HookScript("OnUpdate", function(self)
+			if not LT then return end
+			local ExtraTip = LT:GetExtraTip(self)
+			if ExtraTip then
+				if not ExtraTip.IsDone then
+					ExtraTip:StripTextures()
+					ExtraTip:CreateBackdrop("Transparent")
+					ExtraTip.backdrop:SetPoint("TOPLEFT", 0, -3)
+					ExtraTip.backdrop:SetPoint("BOTTOMRIGHT", 0, 2)
+					ExtraTip:HookScript("OnShow", function(tt)
+						ExtraTip.backdrop:SetFrameLevel(0)
+					end)
+					ExtraTip.IsDone = true
+				end
+			end
+		end)
+	end
+end)
 
 local anchor = CreateFrame("Frame", "TooltipAnchor", UIParent)
 anchor:SetSize(200, 40)
@@ -204,14 +231,14 @@ end
 
 local OnTooltipSetUnit = function(self)
 	local lines = self:NumLines()
-	local unit = (select(2, self:GetUnit())) or (GetMouseFocus() and GetMouseFocus():GetAttribute("unit")) or (UnitExists("mouseover") and "mouseover") or nil
+	local unit = (select(2, self:GetUnit())) or (GetMouseFocus() and GetMouseFocus().GetAttribute and GetMouseFocus():GetAttribute("unit")) or (UnitExists("mouseover") and "mouseover") or nil
 
 	if not unit then return end
 
 	local name, realm = UnitName(unit)
 	local race, englishRace = UnitRace(unit)
 	local level = UnitLevel(unit)
-	local levelColor = GetQuestDifficultyColor(level)
+	local levelColor = GetCreatureDifficultyColor(level)
 	local classification = UnitClassification(unit)
 	local creatureType = UnitCreatureType(unit)
 	local _, faction = UnitFactionGroup(unit)
@@ -366,66 +393,83 @@ end
 ----------------------------------------------------------------------------------------
 --	Fix compare tooltips(by Blizzard)(../FrameXML/GameTooltip.lua)
 ----------------------------------------------------------------------------------------
-hooksecurefunc("GameTooltip_ShowCompareItem", function(self, shift)
+hooksecurefunc("GameTooltip_ShowCompareItem", function(self, anchorFrame)
 	if not self then
 		self = GameTooltip
 	end
 
-	-- Find correct side
+	if not anchorFrame then
+		anchorFrame = self.overrideComparisonAnchorFrame or self
+	end
+
+	if self.needsReset then
+		self:ResetSecondaryCompareItem()
+		GameTooltip_AdvanceSecondaryCompareItem(self)
+		self.needsReset = false
+	end
+
 	local shoppingTooltip1, shoppingTooltip2 = unpack(self.shoppingTooltips)
 	local primaryItemShown, secondaryItemShown = shoppingTooltip1:SetCompareItem(shoppingTooltip2, self)
-	local side = "left"
-	local rightDist = 0
-	local leftPos = self:GetLeft()
-	local rightPos = self:GetRight()
+	local leftPos = anchorFrame:GetLeft()
+	local rightPos = anchorFrame:GetRight()
 
-	if not rightPos then
-		rightPos = 0
+	local side
+	local anchorType = self:GetAnchorType()
+	local totalWidth = 0
+	if primaryItemShown then
+		totalWidth = totalWidth + shoppingTooltip1:GetWidth()
 	end
-	if not leftPos then
-		leftPos = 0
+	if secondaryItemShown then
+		totalWidth = totalWidth + shoppingTooltip2:GetWidth()
 	end
-
-	rightDist = GetScreenWidth() - rightPos
-
-	if leftPos and (rightDist < leftPos) then
-		side = "left"
+	if self.overrideComparisonAnchorSide then
+		side = self.overrideComparisonAnchorSide
 	else
-		side = "right"
+		-- Find correct side
+		local rightDist = 0
+		if not rightPos then
+			rightPos = 0
+		end
+		if not leftPos then
+			leftPos = 0
+		end
+
+		rightDist = GetScreenWidth() - rightPos
+
+		if anchorType and totalWidth < leftPos and (anchorType == "ANCHOR_LEFT" or anchorType == "ANCHOR_TOPLEFT" or anchorType == "ANCHOR_BOTTOMLEFT") then
+			side = "left"
+		elseif anchorType and totalWidth < rightDist and (anchorType == "ANCHOR_RIGHT" or anchorType == "ANCHOR_TOPRIGHT" or anchorType == "ANCHOR_BOTTOMRIGHT") then
+			side = "right"
+		elseif rightDist < leftPos then
+			side = "left"
+		else
+			side = "right"
+		end
 	end
 
 	-- See if we should slide the tooltip
-	if self:GetAnchorType() and self:GetAnchorType() ~= "ANCHOR_PRESERVE" then
-		local totalWidth = 0
-		if primaryItemShown then
-			totalWidth = totalWidth + shoppingTooltip1:GetWidth()
-		end
-		if secondaryItemShown then
-			totalWidth = totalWidth + shoppingTooltip2:GetWidth()
-		end
-
-		if side == "left" and totalWidth > leftPos then
-			self:SetAnchorType(self:GetAnchorType(), totalWidth - leftPos, 0)
-		elseif side == "right" and (rightPos + totalWidth) > GetScreenWidth() then
-			self:SetAnchorType(self:GetAnchorType(), -((rightPos + totalWidth) - GetScreenWidth()), 0)
+	if anchorType and anchorType ~= "ANCHOR_PRESERVE" then
+		if (side == "left") and (totalWidth > leftPos) then
+			self:SetAnchorType(anchorType, (totalWidth - leftPos), 0)
+		elseif (side == "right") and (rightPos + totalWidth) >  GetScreenWidth() then
+			self:SetAnchorType(anchorType, -((rightPos + totalWidth) - GetScreenWidth()), 0)
 		end
 	end
 
-	-- Anchor the compare tooltips
 	if secondaryItemShown then
 		shoppingTooltip2:SetOwner(self, "ANCHOR_NONE")
 		shoppingTooltip2:ClearAllPoints()
-		if side and side == "left" then
-			shoppingTooltip2:SetPoint("TOPRIGHT", self, "TOPLEFT", -3, -10)
-		else
-			shoppingTooltip2:SetPoint("TOPLEFT", self, "TOPRIGHT", 3, -10)
-		end
-
 		shoppingTooltip1:SetOwner(self, "ANCHOR_NONE")
 		shoppingTooltip1:ClearAllPoints()
 
 		if side and side == "left" then
-			shoppingTooltip1:SetPoint("TOPRIGHT", shoppingTooltip2, "TOPLEFT", -3, 0)
+			shoppingTooltip1:SetPoint("TOPRIGHT", anchorFrame, "TOPLEFT", -3, -10)
+		else
+			shoppingTooltip2:SetPoint("TOPLEFT", anchorFrame, "TOPRIGHT", 3, -10)
+		end
+
+		if side and side == "left" then
+			shoppingTooltip2:SetPoint("TOPRIGHT", shoppingTooltip1, "TOPLEFT", -3, 0)
 		else
 			shoppingTooltip1:SetPoint("TOPLEFT", shoppingTooltip2, "TOPRIGHT", 3, 0)
 		end
@@ -434,14 +478,15 @@ hooksecurefunc("GameTooltip_ShowCompareItem", function(self, shift)
 		shoppingTooltip1:ClearAllPoints()
 
 		if side and side == "left" then
-			shoppingTooltip1:SetPoint("TOPRIGHT", self, "TOPLEFT", -3, -10)
+			shoppingTooltip1:SetPoint("TOPRIGHT", anchorFrame, "TOPLEFT", -3, -10)
 		else
-			shoppingTooltip1:SetPoint("TOPLEFT", self, "TOPRIGHT", 3, -10)
+			shoppingTooltip1:SetPoint("TOPLEFT", anchorFrame, "TOPRIGHT", 3, -10)
 		end
 
 		shoppingTooltip2:Hide()
 	end
 
+	-- We have to call this again because :SetOwner clears the tooltip.
 	shoppingTooltip1:SetCompareItem(shoppingTooltip2, self)
 	shoppingTooltip1:Show()
 end)

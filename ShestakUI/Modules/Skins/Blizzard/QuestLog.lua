@@ -46,7 +46,7 @@ local function LoadSkin()
 	end
 	hooksecurefunc("QuestMapFrame_ShowQuestDetails", QuestObjectiveText)
 
-	local function SkinReward(button)
+	local function SkinReward(button, mapReward)
 		if button.NameFrame then button.NameFrame:Hide() end
 		if button.CircleBackground then button.CircleBackground:Hide() end
 		if button.CircleBackgroundGlow then button.CircleBackgroundGlow:Hide() end
@@ -56,6 +56,9 @@ local function LoadSkin()
 		button.backdrop:ClearAllPoints()
 		button.backdrop:SetPoint("TOPLEFT", button.Icon, -2, 2)
 		button.backdrop:SetPoint("BOTTOMRIGHT", button.Icon, 2, -2)
+		if mapReward then
+			button.Icon:SetSize(26, 26)
+		end
 	end
 
 	local function SkinRewardSpell(button)
@@ -75,8 +78,8 @@ local function LoadSkin()
 
 	SkinRewardSpell(QuestInfoSpellObjectiveFrame)
 
-	for _, name in next, {"HonorFrame", "MoneyFrame", "SkillPointFrame", "XPFrame", "ArtifactXPFrame"} do
-		SkinReward(MapQuestInfoRewardsFrame[name])
+	for _, name in next, {"HonorFrame", "MoneyFrame", "SkillPointFrame", "XPFrame", "ArtifactXPFrame", "TitleFrame"} do
+		SkinReward(MapQuestInfoRewardsFrame[name], true)
 	end
 
 	for _, name in next, {"HonorFrame", "SkillPointFrame", "ArtifactXPFrame"} do
@@ -88,16 +91,8 @@ local function LoadSkin()
 	hooksecurefunc("QuestInfo_GetRewardButton", function(rewardsFrame, index)
 		local button = rewardsFrame.RewardButtons[index]
 		if not button.restyled then
-			SkinReward(button)
+			SkinReward(button, rewardsFrame == MapQuestInfoRewardsFrame)
 			button.restyled = true
-		end
-
-		local mapReward = MapQuestInfoRewardsFrame.RewardButtons[index]
-		if mapReward then
-			mapReward.Icon:SetSize(30, 30)
-			if GetNumQuestLogChoices() > 2 then
-				mapReward.Icon:SetSize(26, 26)
-			end
 		end
 	end)
 
@@ -123,6 +118,8 @@ local function LoadSkin()
 		QuestInfoRewardText:SetShadowOffset(1, -1)
 		QuestInfoSpellObjectiveLearnLabel:SetTextColor(1, 1, 1)
 		QuestInfoSpellObjectiveLearnLabel:SetShadowOffset(1, -1)
+		QuestInfoQuestType:SetTextColor(1, 1, 1)
+		QuestInfoQuestType:SetShadowOffset(1, -1)
 
 		-- Reward frame text
 		QuestInfoRewardsFrame.ItemChooseText:SetTextColor(1, 1, 1)
@@ -133,7 +130,6 @@ local function LoadSkin()
 		QuestInfoRewardsFrame.XPFrame.ReceiveText:SetShadowOffset(1, -1)
 		QuestInfoRewardsFrame.PlayerTitleText:SetTextColor(1, 1, 1)
 		QuestInfoRewardsFrame.PlayerTitleText:SetShadowOffset(1, -1)
-		MapQuestInfoRewardsFrameQuestInfoItem1.Count:SetFontObject(NumberFontNormal)
 
 		QuestObjectiveText()
 
@@ -227,7 +223,7 @@ local function LoadSkin()
 
 			questItem.Name:SetTextColor(1, 1, 1)
 		end
-    end)
+	end)
 end
 
 tinsert(T.SkinFuncs["ShestakUI"], LoadSkin)

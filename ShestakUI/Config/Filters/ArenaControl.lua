@@ -22,7 +22,6 @@ T.ArenaControl = {
 	[SpellName(91800)] = 5,		-- Gnaw (Ghoul)
 	[SpellName(91797)] = 5,		-- Monstrous Blow (Mutated Ghoul)
 	[SpellName(108194)] = 5,	-- Asphyxiate
-	--BETA [SpellName(115001)] = 5,	-- Remorseless Winter
 	-- Druid
 	[SpellName(33786)] = 5,		-- Cyclone
 	[SpellName(5211)] = 5,		-- Mighty Bash
@@ -35,20 +34,16 @@ T.ArenaControl = {
 	[SpellName(24394)] = 5,		-- Intimidation
 	-- Mage
 	[SpellName(118)] = 5,		-- Polymorph
-	--BETA [SpellName(44572)] = 5,	-- Deep Freeze
 	[SpellName(82691)] = 5,		-- Ring of Frost
 	[SpellName(31661)] = 5,		-- Dragon's Breath
 	-- Monk
 	[SpellName(115078)] = 5,	-- Paralysis
 	[SpellName(119381)] = 5,	-- Leg Sweep
 	[SpellName(120086)] = 5,	-- Fists of Fury
-	-- BETA [SpellName(119392)] = 5,	-- Charging Ox Wave
 	-- Paladin
 	[SpellName(853)] = 5,		-- Hammer of Justice
-	-- BETA [SpellName(105593)] = 5,	-- Fist of Justice
 	[SpellName(20066)] = 5,		-- Repentance
 	[SpellName(105421)] = 5,	-- Blinding Light
-	[SpellName(145067)] = 5,	-- Turn Evil
 	-- Priest
 	[SpellName(605)] = 5,		-- Dominate Mind
 	[SpellName(8122)] = 5,		-- Psychic Scream
@@ -67,7 +62,6 @@ T.ArenaControl = {
 	-- Warlock
 	[SpellName(118699)] = 5,	-- Fear
 	[SpellName(30283)] = 5,		-- Shadowfury
-	-- BETA [SpellName(137143)] = 5,	-- Blood Horror
 	[SpellName(89766)] = 5,		-- Axe Toss (Felguard)
 	[SpellName(5484)] = 5,		-- Howl of Terror
 	[SpellName(6789)] = 5,		-- Mortal Coil
@@ -85,8 +79,6 @@ T.ArenaControl = {
 	-- Silences
 	[SpellName(47476)] = 4,		-- Strangulate
 	[SpellName(81261)] = 4,		-- Solar Beam
-	--BETA [SpellName(114238)] = 4,	-- Fae Silence
-	-- BETA [SpellName(102051)] = 4,	-- Frostjaw
 	[SpellName(31935)] = 4,		-- Avenger's Shield
 	[SpellName(15487)] = 4,		-- Silence
 	[SpellName(1330)] = 4,		-- Garrote - Silence
@@ -101,17 +93,14 @@ T.ArenaControl = {
 	[SpellName(136634)] = 3,	-- Narrow Escape
 	[SpellName(122)] = 3,		-- Frost Nova
 	[SpellName(33395)] = 3,		-- Freeze (Water Elemental)
-	--BETA [SpellName(111340)] = 3,	-- Ice Ward
 	[SpellName(116706)] = 3,	-- Disable
-	--BETA [SpellName(87194)] = 3,	-- Glyph of Mind Blast
 	[SpellName(114404)] = 3,	-- Void Tendril's Grasp
-	--BETA [SpellName(63685)] = 3,	-- Frozen Power
 	[SpellName(64695)] = 3,		-- Earthgrab
 	[SpellName(170996)] = 3,	-- Debilitate (Terrorguard)
 	[SpellName(107566)] = 3,	-- Staggering Shout
 
 	-- Immunities
-	[SpellName(19263)] = 2,		-- Deterrence
+	[SpellName(186265)] = 2,		-- Aspect of the Turtle
 	[SpellName(45438)] = 2,		-- Ice Block
 	[SpellName(642)] = 2,		-- Divine Shield
 	[SpellName(46924)] = 2,		-- Bladestorm

@@ -40,6 +40,8 @@ L_GUI_MISC_CHARS_CURRENCY = "Zeige deine Währungstoken über diverse Karaktere"
 L_GUI_MISC_ARMORY_LINK = "Add Armory Link im Spieler PopupMenus (Deaktiviert das Focusziel)"
 L_GUI_MISC_MERCHANT_ITEMLEVEL = "Zeige Itemlevel für Waffen & Rüstung bei Händler"
 L_GUI_MISC_MINIMIZE_MOUSEOVER = "Mouseover für Quest minimieren Taste"
+L_GUI_MISC_HIDE_BANNER = "Autoverstecken des Boss Loot Frame"
+L_GUI_MISC_HIDE_TALKING_HEAD = "Hide Talking Head Frame" -- Need review
 
 -- Announcements options
 L_GUI_ANNOUNCEMENTS = "Benachrichtigeungen"
@@ -47,7 +49,6 @@ L_GUI_ANNOUNCEMENTS_DRINKING = "Sage im Chat an wenn ein Arenagegener trinkt"
 L_GUI_ANNOUNCEMENTS_INTERRUPTS = "Sage deine Unterbrechungen im Raid oder Schlachtzugschat an"
 L_GUI_ANNOUNCEMENTS_SPELLS = "Sage im Raid/Schachtzugschat an, wenn du den selben Zauber castest"
 L_GUI_ANNOUNCEMENTS_SPELLS_FROM_ALL = "Prüfe Zauber von allen Spielern"
-L_GUI_ANNOUNCEMENTS_LIGHTWELL = "Benachrichtigung über Lichtbrunnen"
 L_GUI_ANNOUNCEMENTS_TOY_TRAIN = "Benachrichtigung über Spielzeugzug oder Düsterbräu's Fernbedienung"
 L_GUI_ANNOUNCEMENTS_SAYS_THANKS = "Bedanke dich für einige Zauber"
 L_GUI_ANNOUNCEMENTS_PULL_COUNTDOWN = "Pull cuntdown Benachrichtigung '/pc #'"
@@ -64,7 +65,6 @@ L_GUI_AUTOMATION = "Automatisierung"
 L_GUI_AUTOMATION_RELEASE = "Automatisch im Schlachtfeld wiederbeleben"
 L_GUI_AUTOMATION_SCREENSHOT = "Speicher einen Screenshot wenn ein Achivment errungen wird"
 L_GUI_AUTOMATION_SOLVE_ARTIFACT = "Auto Popup für gelöste Artefakte"
-L_GUI_AUTOMATION_CHEFS_HAT = "Automatisch Kochmütze anlegen"
 L_GUI_AUTOMATION_ACCEPT_INVITE = "Einladungen automatisch annehmen"
 L_GUI_AUTOMATION_DECLINE_DUEL = "Duell automatisch ablehnen"
 L_GUI_AUTOMATION_ACCEPT_QUEST = "Quests automatisch annehmen"
@@ -78,7 +78,6 @@ L_GUI_AUTOMATION_LOGGING_COMBAT = "Automatisch Kampflog in Raids als Textdatei m
 L_GUI_AUTOMATION_CURRENCY_CAP = "Auto Popup beim Marken Limit"
 L_GUI_AUTOMATION_BUFF_ON_SCROLL = "Wirke Stärkungszauber mit Mausrad"
 L_GUI_AUTOMATION_OPEN_ITEMS = "Öffnet Automatisch Items in der Tasche"
-L_GUI_AUTOMATION_BANNER_HIDE = "Autoverstecken des Boss Loot Frame"
 
 -- Skins options
 L_GUI_SKINS = "Design/Skins"
@@ -112,6 +111,11 @@ L_GUI_SKINS_VANASKOS = "VanasKoS Design aktivieren"
 L_GUI_SKINS_WEAK_AURAS = "WeakAuras Design aktivieren"
 L_GUI_SKINS_SKADA = "Skada Design aktivieren"
 L_GUI_SKINS_MY_ROLE_PLAY = "MyRolePlay Design aktivieren"
+L_GUI_SKINS_ARH = "Enable styling Archaeology Helper" -- Need review
+L_GUI_SKINS_POSTAL = "Enable styling Postal" -- Need review
+L_GUI_SKINS_OPIE = "Enable styling OPie" -- Need review
+L_GUI_SKINS_REMATCH = "Enable styling Rematch" -- Need review
+L_GUI_SKINS_LS_TOASTS = "Enable styling ls: Toasts" -- Need review
 
 -- Combat text options
 L_GUI_COMBATTEXT = "Kampftext"
@@ -272,18 +276,22 @@ L_GUI_NAMEPLATE_HEALTH = "Numerischer Wert der Lebenspunkte"
 L_GUI_NAMEPLATE_CASTBAR = "Zeige Zauberleiste an der Namensplakette"
 L_GUI_NAMEPLATE_HEIGHT = "Höhe der Namensplakette"
 L_GUI_NAMEPLATE_WIDTH = "Breite der Namensplakette"
+L_GUI_NAMEPLATE_DISTANCE = "Show nameplates for units within this range" -- Need review
 L_GUI_NAMEPLATE_AD_HEIGHT = "zusätzliche Höhe für aktiviert Namensplakette"
 L_GUI_NAMEPLATE_AD_WIDTH = "zusätzliche Breite für aktiviert Namensplakette"
 L_GUI_NAMEPLATE_CASTBAR_NAME = "Zeige den Namen in der Zauberleiste"
 L_GUI_NAMEPLATE_THREAT = "Aktiviere Bedrohungsanzeige, ändert sich automatisch je nach deiner Rolle"
 L_GUI_NAMEPLATE_CLASS_ICON = "Zeige Klassensymbole an (PvP)"
 L_GUI_NAMEPLATE_NAME_ABBREV = "Namen abgekürzt anzeigen"
+L_GUI_NAMEPLATE_CLAMP = "Clamp nameplates to the top of the screen when outside of view" -- Need review
 L_GUI_NAMEPLATE_GOOD_COLOR = "Positive Bedrohungsfarbe. Variiert abhängig ob Tank oder dps/heal"
 L_GUI_NAMEPLATE_NEAR_COLOR = "Verlust oder Zuwachs der Bedrohung farbig kennzeichen"
 L_GUI_NAMEPLATE_BAD_COLOR = "Negative Bedrohungsfarbe. Variiert abhängig ob Tank oder dps/heal"
+L_GUI_NAMEPLATE_OFFTANK_COLOR = "Offtank threat color" -- Need review
 L_GUI_NAMEPLATE_SHOW_DEBUFFS = "Zeige Schwächungszauber (Abgekürzte Namen müssen deaktiviert sein)"
 L_GUI_NAMEPLATE_DEBUFFS_SIZE = "Größe der Debuffs"
 L_GUI_NAMEPLATE_HEALER_ICON = "Zeige Heilersymbol auf allen gegnerischen Heiler-Nameplates im BG"
+L_GUI_NAMEPLATE_TOTEM_ICONS = "Show icon above enemy totems nameplate" -- Need review
 
 -- ActionBar options
 L_GUI_ACTIONBAR_ENABLE = "Aktionsleisten aktivieren"
@@ -325,7 +333,7 @@ L_GUI_AURA_CAST_BY = "Zeige im Tooltip an von wem ein Buff- bzw. Debuff gewirkt 
 L_GUI_AURA_CLASSCOLOR_BORDER = "Aktiviere Klassenfarbe für Spielerbuffs"
 
 -- Filger
-L_GUI_FILGER = "Filger"
+L_GUI_FILGER = "Timers (Filger)" -- Need review
 L_GUI_FILGER_ENABLE = "Aktiviere Filger"
 L_GUI_FILGER_TEST_MODE = "Test Icon Mode"
 L_GUI_FILGER_MAX_TEST_ICON = "Anzahl der Icons im Test Mode"
@@ -369,6 +377,7 @@ L_GUI_UF_PLUGINS_SWING = "Swingleiste"
 L_GUI_UF_PLUGINS_REPUTATION_BAR = "Rufleiste"
 L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "Erfahrungsleiste"
 L_GUI_UF_PLUGINS_FRIENDSHIP_BAR = "Freundschaftsleiste"
+L_GUI_UF_PLUGINS_ARTIFACT_BAR = "Artifact Power bar" -- Need review
 L_GUI_UF_PLUGINS_SMOOTH_BAR = "Weichgezeichnete Leisten"
 L_GUI_UF_PLUGINS_ENEMY_SPEC = "Zeige gegnerische Talente"
 L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "Kampftexts auf Spieler/Zielfenster"

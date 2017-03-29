@@ -155,6 +155,7 @@ or T.name == "Чакернаут" or T.name == "Чаккис" or T.name == "Эз
 	C["misc"].raid_tools = false
 	C["misc"].hide_bg_spam = true
 	C["misc"].disenchanting = true
+	C["misc"].hide_talking_head = true
 	C["announcements"].pull_countdown = false
 	C["automation"].accept_invite = true
 	C["automation"].accept_quest = true
@@ -168,7 +169,6 @@ or T.name == "Чакернаут" or T.name == "Чаккис" or T.name == "Эз
 	C["raidcooldown"].enable = false
 	C["threat"].enable = false
 	C["tooltip"].item_icon = true
-	C["tooltip"].hide_combat = true
 	C["tooltip"].title = true
 	C["tooltip"].raid_icon = true
 	C["tooltip"].average_lvl = true
@@ -179,7 +179,6 @@ or T.name == "Чакернаут" or T.name == "Чаккис" or T.name == "Эз
 	C["bag"].ilvl = true
 	C["map"].fog_of_war = true
 	C["nameplate"].combat = true
-	C["aura"].focus_debuffs = true
 	C["unitframe"].enemy_health_color = false
 	C["unitframe"].castbar_latency = false
 	C["raidframe"].raid_groups = 6
@@ -262,6 +261,5 @@ if IsWetxius then
 	frame:RegisterEvent("PLAYER_LOGIN")
 	frame:SetScript("OnEvent", function()
 		SetCVar("lootUnderMouse", 1)
-		SetCVar("cameraDistanceMoveSpeed", 50)
 	end)
 end

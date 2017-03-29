@@ -40,6 +40,8 @@ L_GUI_MISC_CHARS_CURRENCY = "追蹤所有角色金錢信息"
 L_GUI_MISC_ARMORY_LINK = "頭像菜單增加英雄榜鏈接"
 L_GUI_MISC_MERCHANT_ITEMLEVEL = "Show item level for weapons and armor in merchant" -- Need review
 L_GUI_MISC_MINIMIZE_MOUSEOVER = "Mouseover for quest minimize button" -- Need review
+L_GUI_MISC_HIDE_BANNER = "自動隱藏Boss額外拾取提示"
+L_GUI_MISC_HIDE_TALKING_HEAD = "Hide Talking Head Frame" -- Need review
 
 -- Announcements options
 L_GUI_ANNOUNCEMENTS = "通告提醒"
@@ -47,7 +49,6 @@ L_GUI_ANNOUNCEMENTS_DRINKING = "當敵人進食時,在聊天窗口進行通告"
 L_GUI_ANNOUNCEMENTS_INTERRUPTS = "當你斷法成功時,在隊伍/團隊中進行通告"
 L_GUI_ANNOUNCEMENTS_SPELLS = "當你施放相同法術時,在隊伍/團隊中進行通告"
 L_GUI_ANNOUNCEMENTS_SPELLS_FROM_ALL = "檢視所有隊員的法術"
-L_GUI_ANNOUNCEMENTS_LIGHTWELL = "當你放置光束泉時進行通告"
 L_GUI_ANNOUNCEMENTS_TOY_TRAIN = "使用玩具火車/烈酒的遙控器時進行通告"
 L_GUI_ANNOUNCEMENTS_SAYS_THANKS = "感謝Buff提供者"
 L_GUI_ANNOUNCEMENTS_PULL_COUNTDOWN = "倒計時通告'/pc #'"
@@ -64,7 +65,6 @@ L_GUI_AUTOMATION = "自動設定"
 L_GUI_AUTOMATION_RELEASE = "戰場中自動釋放靈魂" -- Need review
 L_GUI_AUTOMATION_SCREENSHOT = "獲得成就時自動截屏"
 L_GUI_AUTOMATION_SOLVE_ARTIFACT = "自動彈出幫助框架"
-L_GUI_AUTOMATION_CHEFS_HAT = "自動裝備'大廚的帽子'"
 L_GUI_AUTOMATION_ACCEPT_INVITE = "自動接受組隊邀請"
 L_GUI_AUTOMATION_DECLINE_DUEL = "自動取消决鬥"
 L_GUI_AUTOMATION_ACCEPT_QUEST = "自動接受任務"
@@ -78,7 +78,6 @@ L_GUI_AUTOMATION_LOGGING_COMBAT = "團隊副本時自動開啟戰鬥記錄"
 L_GUI_AUTOMATION_CURRENCY_CAP = "自動彈出貨幣提示框"
 L_GUI_AUTOMATION_BUFF_ON_SCROLL = "使用滑鼠滾輪施放Buff"
 L_GUI_AUTOMATION_OPEN_ITEMS = "自動打開背包中的封裝物品"
-L_GUI_AUTOMATION_BANNER_HIDE = "自動隱藏Boss額外拾取提示"
 
 -- Skins options
 L_GUI_SKINS = "介面樣式增強"
@@ -112,6 +111,11 @@ L_GUI_SKINS_VANASKOS = "VanasKoS"
 L_GUI_SKINS_WEAK_AURAS = "WeakAuras"
 L_GUI_SKINS_SKADA = "Skada"
 L_GUI_SKINS_MY_ROLE_PLAY = "MyRolePlay"
+L_GUI_SKINS_ARH = "Archaeology Helper"
+L_GUI_SKINS_POSTAL = "Postal"
+L_GUI_SKINS_OPIE = "OPie"
+L_GUI_SKINS_REMATCH = "Rematch"
+L_GUI_SKINS_LS_TOASTS = "ls: Toasts"
 
 -- Combat text options
 L_GUI_COMBATTEXT = "戰鬥文字"
@@ -272,18 +276,22 @@ L_GUI_NAMEPLATE_HEALTH = "生命值以百分比顯示"
 L_GUI_NAMEPLATE_CASTBAR = "施法條"
 L_GUI_NAMEPLATE_HEIGHT = "單位名條高度"
 L_GUI_NAMEPLATE_WIDTH = "單位名條寬度"
+L_GUI_NAMEPLATE_DISTANCE = "Show nameplates for units within this range" -- Need review
 L_GUI_NAMEPLATE_AD_HEIGHT = "目標的單位名條額外高度"
 L_GUI_NAMEPLATE_AD_WIDTH = "目標的單位名條額外寬度"
 L_GUI_NAMEPLATE_CASTBAR_NAME = "法術名稱"
 L_GUI_NAMEPLATE_THREAT = "仇恨情況"
 L_GUI_NAMEPLATE_CLASS_ICON = "PvP時顯示職業圖示"
 L_GUI_NAMEPLATE_NAME_ABBREV = "名字縮寫"
+L_GUI_NAMEPLATE_CLAMP = "Clamp nameplates to the top of the screen when outside of view" -- Need review
 L_GUI_NAMEPLATE_GOOD_COLOR = "安全仇恨顏色"
 L_GUI_NAMEPLATE_NEAR_COLOR = "臨界仇恨顏色"
 L_GUI_NAMEPLATE_BAD_COLOR = "危險仇恨顏色"
+L_GUI_NAMEPLATE_OFFTANK_COLOR = "Offtank threat color" -- Need review
 L_GUI_NAMEPLATE_SHOW_DEBUFFS = "DeBuff圖示(需要關閉'名字縮寫')"
 L_GUI_NAMEPLATE_DEBUFFS_SIZE = "DeBuff大小"
 L_GUI_NAMEPLATE_HEALER_ICON = "戰場中顯示治療職業圖示"
+L_GUI_NAMEPLATE_TOTEM_ICONS = "Show icon above enemy totems nameplate" -- Need review
 
 -- ActionBar options
 L_GUI_ACTIONBAR_ENABLE = "開啟快捷列增強"
@@ -325,7 +333,7 @@ L_GUI_AURA_CAST_BY = "提示Buff/DeBuff提供者"
 L_GUI_AURA_CLASSCOLOR_BORDER = "自身Buff圖示邊框按職業著色"
 
 -- Filger
-L_GUI_FILGER = "Filger"
+L_GUI_FILGER = "Timers (Filger)" -- Need review
 L_GUI_FILGER_ENABLE = "開啟Filger" -- Need review
 L_GUI_FILGER_TEST_MODE = "調試模式"
 L_GUI_FILGER_MAX_TEST_ICON = "調試模式圖示數量"
@@ -369,6 +377,7 @@ L_GUI_UF_PLUGINS_SWING = "普通攻擊計時條"
 L_GUI_UF_PLUGINS_REPUTATION_BAR = "聲望條"
 L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "經驗條"
 L_GUI_UF_PLUGINS_FRIENDSHIP_BAR = "友誼條"
+L_GUI_UF_PLUGINS_ARTIFACT_BAR = "Artifact Power bar" -- Need review
 L_GUI_UF_PLUGINS_SMOOTH_BAR = "平滑條"
 L_GUI_UF_PLUGINS_ENEMY_SPEC = "敵對玩家天賦"
 L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "玩家/目標框架顯示戰鬥文字"

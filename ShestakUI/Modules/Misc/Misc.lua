@@ -46,7 +46,6 @@ end)
 StaticPopupDialogs.RESURRECT.hideOnEscape = nil
 StaticPopupDialogs.AREA_SPIRIT_HEAL.hideOnEscape = nil
 StaticPopupDialogs.PARTY_INVITE.hideOnEscape = nil
-StaticPopupDialogs.PARTY_INVITE_XREALM.hideOnEscape = nil
 StaticPopupDialogs.CONFIRM_SUMMON.hideOnEscape = nil
 StaticPopupDialogs.ADDON_ACTION_FORBIDDEN.button1 = nil
 StaticPopupDialogs.TOO_MANY_LUA_ERRORS.button1 = nil
@@ -245,8 +244,24 @@ end)
 ----------------------------------------------------------------------------------------
 --	Boss Banner Hider
 ----------------------------------------------------------------------------------------
-if C.automation.banner_hide == true then
+if C.misc.hide_banner == true then
 	BossBanner.PlayBanner = function() end
+end
+
+----------------------------------------------------------------------------------------
+--	Hide TalkingHeadFrame
+----------------------------------------------------------------------------------------
+if C.misc.hide_talking_head == true then
+	local frame = CreateFrame("Frame")
+	frame:RegisterEvent("ADDON_LOADED")
+	frame:SetScript("OnEvent", function(self, event, addon)
+		if addon == "Blizzard_TalkingHeadUI" then
+			hooksecurefunc("TalkingHeadFrame_PlayCurrent", function()
+				TalkingHeadFrame:Hide()
+			end)
+			self:UnregisterEvent(event)
+		end
+	end)
 end
 
 ----------------------------------------------------------------------------------------

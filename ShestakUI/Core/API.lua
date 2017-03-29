@@ -129,7 +129,7 @@ end
 local function StripTextures(object, kill)
 	for i = 1, object:GetNumRegions() do
 		local region = select(i, object:GetRegions())
-		if region:GetObjectType() == "Texture" then
+		if region and region:GetObjectType() == "Texture" then
 			if kill then
 				region:Kill()
 			else
@@ -299,10 +299,14 @@ addapi(object:CreateFontString())
 
 object = EnumerateFrames()
 while object do
-	if not handled[object:GetObjectType()] then
+	if not object:IsForbidden() and not handled[object:GetObjectType()] then
 		addapi(object)
 		handled[object:GetObjectType()] = true
 	end
 
 	object = EnumerateFrames(object)
 end
+
+-- Hacky fix for issue on 7.1 PTR where scroll frames no longer seem to inherit the methods from the "Frame" widget
+local scrollFrame = CreateFrame("ScrollFrame")
+addapi(scrollFrame)

@@ -285,14 +285,14 @@ local function Shared(self, unit)
 		if T.class == "MAGE" then
 			-- Arcane Charge bar
 			if C.unitframe_class_bar.arcane == true then
-				self.ArcaneCharge = CreateFrame("Frame", self:GetName().."ArcaneCharge", self)
+				self.ArcaneCharge = CreateFrame("Frame", self:GetName().."_ArcaneCharge", self)
 				self.ArcaneCharge:CreateBackdrop("Default")
 				self.ArcaneCharge:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
 				self.ArcaneCharge:SetSize(217, 7)
 
 				for i = 1, 4 do
-					self.ArcaneCharge[i] = CreateFrame("StatusBar", self:GetName().."ArcaneCharge"..i, self.ArcaneCharge)
-					self.ArcaneCharge[i]:SetSize(213 / 4, 7)
+					self.ArcaneCharge[i] = CreateFrame("StatusBar", self:GetName().."_ArcaneCharge"..i, self.ArcaneCharge)
+					self.ArcaneCharge[i]:SetSize(214 / 4, 7)
 					if i == 1 then
 						self.ArcaneCharge[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
 					else
@@ -411,7 +411,7 @@ local function Shared(self, unit)
 			self.HolyPower:SetSize(217, 7)
 
 			for i = 1, 5 do
-				self.HolyPower[i] = CreateFrame("StatusBar", self:GetName().."_HolyPowerBar", self.HolyPower)
+				self.HolyPower[i] = CreateFrame("StatusBar", self:GetName().."_HolyPower"..i, self.HolyPower)
 				self.HolyPower[i]:SetSize(213 / 5, 7)
 				if i == 1 then
 					self.HolyPower[i]:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
@@ -425,11 +425,7 @@ local function Shared(self, unit)
 				self.HolyPower[i].bg:SetAllPoints()
 				self.HolyPower[i].bg:SetTexture(C.media.texture)
 				self.HolyPower[i].bg:SetVertexColor(0.89, 0.88, 0.1, 0.2)
-
-				self.HolyPower[i].width = self.HolyPower[i]:GetWidth()
 			end
-
-			self.HolyPower.Override = T.UpdateHoly
 		end
 
 		-- Soul Shards bar
@@ -464,9 +460,9 @@ local function Shared(self, unit)
 			self.CPoints:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
 			self.CPoints:SetSize(217, 7)
 
-			for i = 1, 8 do
+			for i = 1, 10 do
 				self.CPoints[i] = CreateFrame("StatusBar", self:GetName().."_ComboBar", self.CPoints)
-				self.CPoints[i]:SetSize(213 / 8, 7)
+				self.CPoints[i]:SetSize(213 / 10, 7)
 				if i == 1 then
 					self.CPoints[i]:SetPoint("LEFT", self.CPoints)
 				else
@@ -480,9 +476,11 @@ local function Shared(self, unit)
 			self.CPoints[3]:SetStatusBarColor(0.9, 0.9, 0.1)
 			self.CPoints[4]:SetStatusBarColor(0.9, 0.9, 0.1)
 			self.CPoints[5]:SetStatusBarColor(0.1, 0.9, 0.1)
-			self.CPoints[6]:SetStatusBarColor(0.1, 0.9, 0.1)
-			self.CPoints[7]:SetStatusBarColor(0.1, 0.9, 0.1)
-			self.CPoints[8]:SetStatusBarColor(0.1, 0.9, 0.1)
+			self.CPoints[6]:SetStatusBarColor(0.3, 0.3, 0.8)
+			self.CPoints[7]:SetStatusBarColor(0.3, 0.3, 0.8)
+			self.CPoints[8]:SetStatusBarColor(0.3, 0.3, 0.8)
+			self.CPoints[9]:SetStatusBarColor(0.3, 0.3, 0.8)
+			self.CPoints[10]:SetStatusBarColor(0.3, 0.3, 0.8)
 
 			if T.class == "DRUID" and C.unitframe_class_bar.combo_always ~= true then
 				self:RegisterEvent("UPDATE_SHAPESHIFT_FORM", T.UpdateComboPoint)
@@ -648,6 +646,58 @@ local function Shared(self, unit)
 			self.Reputation.Tooltip = true
 		end
 
+		-- Artifact Power bar
+		if C.unitframe.plugins_artifact_bar == true then
+			self.ArtifactPower = CreateFrame("StatusBar", self:GetName().."_ArtifactPower", self)
+			self.ArtifactPower:CreateBackdrop("Default")
+			self.ArtifactPower:EnableMouse(true)
+			if C.unitframe.portrait_enable == true then
+				if T.level == MAX_PLAYER_LEVEL then
+					if C.unitframe.plugins_reputation_bar == true then
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -38 - C.unitframe.portrait_width, 28)
+					else
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -25 - C.unitframe.portrait_width, 28)
+					end
+				else
+					if C.unitframe.plugins_reputation_bar == true then
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -52 - C.unitframe.portrait_width, 28)
+					else
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -39 - C.unitframe.portrait_width, 28)
+					end
+				end
+			else
+				if T.level == MAX_PLAYER_LEVEL then
+					if C.unitframe.plugins_reputation_bar == true then
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -31, 28)
+					else
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -18, 28)
+					end
+				else
+					if C.unitframe.plugins_reputation_bar == true then
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -45, 28)
+					else
+						self.ArtifactPower:SetPoint("TOPLEFT", self, "TOPLEFT", -32, 28)
+					end
+				end
+			end
+			self.ArtifactPower:SetSize(7, 94)
+			self.ArtifactPower:SetOrientation("Vertical")
+			self.ArtifactPower:SetStatusBarTexture(C.media.texture)
+			self.ArtifactPower.offAlpha = 0
+
+			self.ArtifactPower.bg = self.ArtifactPower:CreateTexture(nil, "BORDER")
+			self.ArtifactPower.bg:SetAllPoints()
+			self.ArtifactPower.bg:SetTexture(C.media.texture)
+
+			self.ArtifactPower:HookScript("OnEnter", function(self) self.ArtifactPower.offAlpha = 1 end)
+			self.ArtifactPower:HookScript("OnLeave", function(self) self.ArtifactPower.offAlpha = 0 end)
+			self.ArtifactPower.PostUpdate = function(self, event, isShown)
+				self:SetStatusBarColor(T.color.r, T.color.g, T.color.b)
+				self.bg:SetVertexColor(1, 0, 0, 0.2)
+			end
+			self.ArtifactPower.Tooltip = true
+		end
+
 		-- GCD spark
 		if C.unitframe.plugins_gcd == true then
 			self.GCD = CreateFrame("Frame", self:GetName().."_GCD", self)
@@ -793,9 +843,9 @@ local function Shared(self, unit)
 				self.CPoints:SetPoint("BOTTOMLEFT", self, "TOPLEFT", 0, 7)
 				self.CPoints:SetSize(217, 7)
 
-				for i = 1, 8 do
+				for i = 1, 10 do
 					self.CPoints[i] = CreateFrame("StatusBar", self:GetName().."_ComboBar", self.CPoints)
-					self.CPoints[i]:SetSize(213 / 8, 7)
+					self.CPoints[i]:SetSize(213 / 10, 7)
 					if i == 1 then
 						self.CPoints[i]:SetPoint("LEFT", self.CPoints)
 					else
@@ -809,9 +859,11 @@ local function Shared(self, unit)
 				self.CPoints[3]:SetStatusBarColor(0.9, 0.9, 0.1)
 				self.CPoints[4]:SetStatusBarColor(0.9, 0.9, 0.1)
 				self.CPoints[5]:SetStatusBarColor(0.1, 0.9, 0.1)
-				self.CPoints[6]:SetStatusBarColor(0.1, 0.9, 0.1)
-				self.CPoints[7]:SetStatusBarColor(0.1, 0.9, 0.1)
-				self.CPoints[8]:SetStatusBarColor(0.1, 0.9, 0.1)
+				self.CPoints[6]:SetStatusBarColor(0.3, 0.3, 0.8)
+				self.CPoints[7]:SetStatusBarColor(0.3, 0.3, 0.8)
+				self.CPoints[8]:SetStatusBarColor(0.3, 0.3, 0.8)
+				self.CPoints[9]:SetStatusBarColor(0.3, 0.3, 0.8)
+				self.CPoints[10]:SetStatusBarColor(0.3, 0.3, 0.8)
 
 				self.CPoints.Override = T.UpdateComboPointOld
 			end
@@ -1368,7 +1420,7 @@ if C.unitframe.show_arena == true then
 						local _, spec, class = nil, "UNKNOWN", "UNKNOWN"
 
 						if s and s > 0 then
-							_, spec, _, _, _, _, class = GetSpecializationInfoByID(s)
+							_, spec, _, _, _, class = GetSpecializationInfoByID(s)
 						end
 
 						if class and spec then

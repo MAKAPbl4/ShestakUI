@@ -4,7 +4,7 @@ local oUF = ns.oUF
 oUF.colors.health = {49/255, 207/255, 37/255}
 
 local Update = function(self, event, unit)
-	if(self.unit ~= unit) then return end
+	if(not unit or self.unit ~= unit) then return end
 	local health = self.Health
 
 	if(health.PreUpdate) then health:PreUpdate(unit) end
@@ -90,6 +90,7 @@ end
 local Disable = function(self)
 	local health = self.Health
 	if(health) then
+		health:Hide()
 		self:UnregisterEvent('UNIT_HEALTH_FREQUENT', Path)
 		self:UnregisterEvent('UNIT_HEALTH', Path)
 		self:UnregisterEvent('UNIT_MAXHEALTH', Path)

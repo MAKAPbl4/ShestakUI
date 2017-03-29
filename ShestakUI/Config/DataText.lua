@@ -105,6 +105,7 @@ LPSTAT_CONFIG = {
 			["Защитники Тол Барада"] = "Тол Барад",
 			["Гидраксианские Повелители Вод"] = "Повелители Вод",
 		},
+		artifact_fmt = "[curart]([curart%]%)"..class"AP", -- Artifact power format
 		anchor_frame = "Durability", anchor_to = "left", anchor_from = "right",
 		x_off = C.stats.durability and 3 or 0, y_off = 0, tip_frame = "UIParent", tip_anchor = "BOTTOMLEFT", tip_x = 21, tip_y = 20
 	},
@@ -144,22 +145,10 @@ LPSTAT_CONFIG = {
 		anchor_frame = "Stats", anchor_to = "topleft", anchor_from = "bottomleft",
 		x_off = 0, y_off = -5,
 	},
-	--BETA Helm = {
-		-- enabled = C.toppanel.enable,
-		-- fmt = class"H: ".."%s",
-		-- anchor_frame = "Bags", anchor_to = "left", anchor_from = "right",
-		-- x_off = 3, y_off = 0,
-	-- },
-	-- Cloak = {
-		-- enabled = C.toppanel.enable,
-		-- fmt = class"C: ".."%s",
-		-- anchor_frame = "Helm", anchor_to = "left", anchor_from = "right",
-		-- x_off = 3, y_off = 0,
-	-- },
 	Loot = {
 		enabled = C.toppanel.enable,
 		fmt = class"L: ".."%s",
-		anchor_frame = "Cloak", anchor_to = "left", anchor_from = "right",
+		anchor_frame = "Bags", anchor_to = "left", anchor_from = "right",
 		x_off = 3, y_off = 0,
 	},
 	Nameplates = {

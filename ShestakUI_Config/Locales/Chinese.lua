@@ -40,6 +40,8 @@ L_GUI_MISC_CHARS_CURRENCY = "追踪所有角色金钱信息"
 L_GUI_MISC_ARMORY_LINK = "头像菜单增加英雄版链接"
 L_GUI_MISC_MERCHANT_ITEMLEVEL = "Show item level for weapons and armor in merchant" -- Need review
 L_GUI_MISC_MINIMIZE_MOUSEOVER = "Mouseover for quest minimize button" -- Need review
+L_GUI_MISC_HIDE_BANNER = "自动隐藏Boss额外拾取提示"
+L_GUI_MISC_HIDE_TALKING_HEAD = "Hide Talking Head Frame" -- Need review
 
 -- Announcements options
 L_GUI_ANNOUNCEMENTS = "通告预警"
@@ -47,7 +49,6 @@ L_GUI_ANNOUNCEMENTS_DRINKING = "当敌人进食时,在聊天窗口进行通告"
 L_GUI_ANNOUNCEMENTS_INTERRUPTS = "当你打断成功时,在队伍/团队中进行通告"
 L_GUI_ANNOUNCEMENTS_SPELLS = "当你施放相同法术时,在队伍/团队中进行通告"
 L_GUI_ANNOUNCEMENTS_SPELLS_FROM_ALL = "检视所有队员的法术"
-L_GUI_ANNOUNCEMENTS_LIGHTWELL = "当你放置光束泉时进行通告"
 L_GUI_ANNOUNCEMENTS_TOY_TRAIN = "使用玩具火车/烈酒的遥控器时进行通告"
 L_GUI_ANNOUNCEMENTS_SAYS_THANKS = "感谢Buff提供者"
 L_GUI_ANNOUNCEMENTS_PULL_COUNTDOWN = "倒计时通告'/pc #'"
@@ -64,7 +65,6 @@ L_GUI_AUTOMATION = "自动设定"
 L_GUI_AUTOMATION_RELEASE = "战场中自动释放灵魂" -- Need review
 L_GUI_AUTOMATION_SCREENSHOT = "获得成就时自动截屏"
 L_GUI_AUTOMATION_SOLVE_ARTIFACT = "自动弹出帮助框架"
-L_GUI_AUTOMATION_CHEFS_HAT = "自动装备'大厨的帽子'"
 L_GUI_AUTOMATION_ACCEPT_INVITE = "自动接受组队邀请"
 L_GUI_AUTOMATION_DECLINE_DUEL = "自动取消决斗"
 L_GUI_AUTOMATION_ACCEPT_QUEST = "自动接受任务"
@@ -78,7 +78,6 @@ L_GUI_AUTOMATION_LOGGING_COMBAT = "团队副本时自动开启战斗记录"
 L_GUI_AUTOMATION_CURRENCY_CAP = "自动弹出货币提示框"
 L_GUI_AUTOMATION_BUFF_ON_SCROLL = "使用鼠标滚轮施放Buffs"
 L_GUI_AUTOMATION_OPEN_ITEMS = "自动打开背包中的封装物品"
-L_GUI_AUTOMATION_BANNER_HIDE = "自动隐藏Boss额外拾取提示"
 
 -- Skins options
 L_GUI_SKINS = "界面样式增强"
@@ -112,6 +111,11 @@ L_GUI_SKINS_VANASKOS = "VanasKoS"
 L_GUI_SKINS_WEAK_AURAS = "WeakAuras"
 L_GUI_SKINS_SKADA = "Skada"
 L_GUI_SKINS_MY_ROLE_PLAY = "MyRolePlay"
+L_GUI_SKINS_ARH = "Archaeology Helper"
+L_GUI_SKINS_POSTAL = "Postal"
+L_GUI_SKINS_OPIE = "OPie"
+L_GUI_SKINS_REMATCH = "Rematch"
+L_GUI_SKINS_LS_TOASTS = "ls: Toasts"
 
 -- Combat text options
 L_GUI_COMBATTEXT = "战斗文字"
@@ -272,18 +276,22 @@ L_GUI_NAMEPLATE_HEALTH = "生命值以百分比显示"
 L_GUI_NAMEPLATE_CASTBAR = "施法条"
 L_GUI_NAMEPLATE_HEIGHT = "单位名条高度"
 L_GUI_NAMEPLATE_WIDTH = "单位名条宽度"
+L_GUI_NAMEPLATE_DISTANCE = "Show nameplates for units within this range" -- Need review
 L_GUI_NAMEPLATE_AD_HEIGHT = "目标的单位名条额外高度"
 L_GUI_NAMEPLATE_AD_WIDTH = "目标的单位名条额外宽度"
 L_GUI_NAMEPLATE_CASTBAR_NAME = "法术名称"
 L_GUI_NAMEPLATE_THREAT = "仇恨情况"
 L_GUI_NAMEPLATE_CLASS_ICON = "PvP时显示职业图示"
 L_GUI_NAMEPLATE_NAME_ABBREV = "名字缩写"
+L_GUI_NAMEPLATE_CLAMP = "Clamp nameplates to the top of the screen when outside of view" -- Need review
 L_GUI_NAMEPLATE_GOOD_COLOR = "安全仇恨颜色"
 L_GUI_NAMEPLATE_NEAR_COLOR = "临界仇恨颜色"
 L_GUI_NAMEPLATE_BAD_COLOR = "危险仇恨颜色"
+L_GUI_NAMEPLATE_OFFTANK_COLOR = "Offtank threat color" -- Need review
 L_GUI_NAMEPLATE_SHOW_DEBUFFS = "DeBuffs图示(需要关闭'名字缩写')"
 L_GUI_NAMEPLATE_DEBUFFS_SIZE = "DeBuffs大小"
 L_GUI_NAMEPLATE_HEALER_ICON = "战场中显示治疗职业图示"
+L_GUI_NAMEPLATE_TOTEM_ICONS = "Show icon above enemy totems nameplate" -- Need review
 
 -- ActionBar options
 L_GUI_ACTIONBAR_ENABLE = "开启动作条增强"
@@ -369,6 +377,7 @@ L_GUI_UF_PLUGINS_SWING = "普通攻击计时条"
 L_GUI_UF_PLUGINS_REPUTATION_BAR = "声望条"
 L_GUI_UF_PLUGINS_EXPERIENCE_BAR = "经验条"
 L_GUI_UF_PLUGINS_FRIENDSHIP_BAR = "友谊条"
+L_GUI_UF_PLUGINS_ARTIFACT_BAR = "Artifact Power bar" -- Need review
 L_GUI_UF_PLUGINS_SMOOTH_BAR = "平滑条"
 L_GUI_UF_PLUGINS_ENEMY_SPEC = "敌对玩家天赋"
 L_GUI_UF_PLUGINS_COMBAT_FEEDBACK = "玩家/目标框架显示战斗文字"

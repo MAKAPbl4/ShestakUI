@@ -5,13 +5,6 @@ if T.client ~= "itIT" then return end
 --	Localization for itIT client
 --	Translation: Oz
 ----------------------------------------------------------------------------------------
--- Announce your Lightwell
-L_ANNOUNCE_LA_USE = " ha usato il mio Pozzo di Luce. "
-L_ANNOUNCE_LA_CHARGE = " carica (cariche)"
-L_ANNOUNCE_LA_USELESS = " ha usato il mio Pozzo di Luce inutilmente! "
-L_ANNOUNCE_LA_PLACED = "Pozzo di Luce posizionato. "
-L_ANNOUNCE_LA_CHARGES = " cariche."
-
 -- Announce flasks and food
 L_ANNOUNCE_FF_NOFOOD = "Senza beneficio da cibo: "
 L_ANNOUNCE_FF_NOFLASK = "Senza beneficio da tonico: "
@@ -63,6 +56,7 @@ L_MISC_BINDER_OPEN = "Assegnazione pulsanti mouse"
 L_MISC_GROCERY_BUY = "Compra"
 L_MISC_GROCERY_DESC = "Compra automaticamente i sacchetti di alimenti"
 L_MISC_SCROLL = "Pergamena"
+L_MISC_COLLAPSE = "The Collapse" -- Need review
 
 -- Raid Utility
 L_RAID_UTIL_DISBAND = "Sciogli il gruppo"
@@ -173,12 +167,6 @@ L_BIND_BINDING = "Assegnazione"
 L_BIND_KEY = "Tasto"
 L_BIND_NO_SET = "Nessuna assegnazione impostata"
 
--- Talent spec
-L_PLANNER_DRUID_4 = "Rigenerazione"
-L_PLANNER_MONK_2 = "Misticismo"
-L_PLANNER_PALADIN_1 = "Sacro"
-L_PLANNER_PRIEST_1 = "Disciplina"
-
 -- BG stats
 L_DATATEXT_BASESASSAULTED = "Basi assaltate:"
 L_DATATEXT_BASESDEFENDED = "Basi difese:"
@@ -237,6 +225,7 @@ L_COMBATTEXT_TEST_ENABLED = "Modalità 'prova' del testo di combattimento abilit
 L_COMBATTEXT_TEST_USE_UNLOCK = "Digita /xct per sbloccare e quindi poter muovere e ridimensionare i riquadri del testo di combattimento."
 L_COMBATTEXT_TEST_USE_LOCK = "Digita /xct per bloccare i riquadri del testo di combattimento."
 L_COMBATTEXT_TEST_USE_TEST = "Digita /xct test per attivare la modalità 'prova' per il testo di combattimento."
+L_COMBATTEXT_TEST_USE_RESET = "Type /xct reset to restore default positions." -- Need review
 L_COMBATTEXT_POPUP = "Per poter salvare la posizione delle finestre del testo di combattimento è necessario riavviare la tua interfaccia utente."
 L_COMBATTEXT_UNSAVED = "La posizione delle finestre del testo di combattimento non è ancora stata salvata: non dimenticare di riavviare l'interfaccia utente."
 L_COMBATTEXT_UNLOCKED = "Testo di combattimento sbloccato."

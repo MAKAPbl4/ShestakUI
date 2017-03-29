@@ -140,82 +140,33 @@ end
 local trashButton = {}
 local trashBag = {}
 
-local upgrades = {
-	["1"] = 8, ["373"] = 4, ["374"] = 8, ["375"] = 4, ["376"] = 4, ["377"] = 4,
-	["379"] = 4, ["380"] = 4, ["446"] = 4, ["447"] = 8, ["452"] = 8, ["454"] = 4,
-	["455"] = 8, ["457"] = 8, ["459"] = 4, ["460"] = 8, ["461"] = 12, ["462"] = 16,
-	["466"] = 4, ["467"] = 8, ["469"] = 4, ["470"] = 8, ["471"] = 12, ["472"] = 16,
-	["477"] = 4, ["478"] = 8, ["480"] = 8, ["492"] = 4, ["493"] = 8, ["495"] = 4,
-	["496"] = 8, ["497"] = 12, ["498"] = 16, ["504"] = 12, ["505"] = 16, ["506"] = 20,
-	["507"] = 24, ["530"] = 5, ["531"] = 10, ["535"] = 15, ["536"] = 30, ["537"] = 45
-}
+local ItemDB = {}
 
-local legionUpgrades = {
-	["664"] = 689, ["767"] = 685, ["768"] = 693, ["1735"] = 705, ["1736"] = 699, ["1738"] = 709,
-	["1739"] = 703, ["1741"] = 713, ["1792"] = 699, ["1793"] = 703, ["1794"] = 695, ["1795"] = 700,
-}
+-- Tooltip and scanning by Phanx @ http://www.wowinterface.com/forums/showthread.php?p=271406
+local S_ITEM_LEVEL = "^" .. gsub(ITEM_LEVEL, "%%d", "(%%d+)")
 
-local function BOALevel(level, id)
-	if level > 97 then
-		if id == 133585 or id == 133595 or id == 133596 or id == 133597 or id == 133598 then
-			level = 815 - (110 - level) * 10
-		else
-			level = 605 - (100 - level) * 5
-		end
-	elseif level > 90 then
-		level = 590 - (97 - level) * 10
-	elseif level > 85 then
-		level = 463 - (90 - level) * 19.75
-	elseif level > 80 then
-		level = 333 - (85 - level) * 13.5
-	elseif level > 67 then
-		level = 187 - (80 - level) * 4
-	elseif level > 57 then
-		level = 105 - (67 - level) * 2.9
-	elseif level > 5 then
-		level = level + 5
-	else
-		level = 10
-	end
+local scantip = CreateFrame("GameTooltip", "iLvlScanningTooltip", nil, "GameTooltipTemplate")
+scantip:SetOwner(UIParent, "ANCHOR_NONE")
 
-	return floor(level + 0.5)
-end
+local function _getRealItemLevel(link)
+	if ItemDB[link] then return ItemDB[link] end
 
-local timewarped = {
-	["615"] = 660, -- Dungeon drops
-	["692"] = 675, -- Timewarped badge vendors
-	["656"] = 675, -- Warforged Dungeon drops
-}
+	local realItemLevel
+	scantip:SetHyperlink(link)
 
-local itemLevelPattern = gsub(ITEM_LEVEL, "%%d", "(%%d+)")
-local tooltipLines = {
-	"ShestakUI_ItemScanningTooltipTextLeft2",
-	"ShestakUI_ItemScanningTooltipTextLeft3",
-	"ShestakUI_ItemScanningTooltipTextLeft4",
-}
-local tooltip = CreateFrame("GameTooltip", "ShestakUI_ItemScanningTooltip", UIParent, "GameTooltipTemplate")
-tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+	for i = 2, scantip:NumLines() do -- Line 1 is always the name so you can skip it.
+		local text = _G["iLvlScanningTooltipTextLeft"..i]:GetText()
+		if text and text ~= "" then
+			realItemLevel = realItemLevel or strmatch(text, S_ITEM_LEVEL)
 
--- Scan tooltip for item level information
-local function GetItemLevel(itemLink)
-	if not itemLink or not GetItemInfo(itemLink) then
-		return
-	end
-
-	tooltip:ClearLines()
-	tooltip:SetHyperlink(itemLink)
-
-	local text, itemLevel
-	for index = 1, #tooltipLines do
-		text = _G[tooltipLines[index]]:GetText()
-
-		if text then
-			itemLevel = tonumber(string.match(text, itemLevelPattern))
-			if itemLevel then
-				return itemLevel
+			if realItemLevel then
+				ItemDB[link] = tonumber(realItemLevel)
+				return tonumber(realItemLevel)
 			end
 		end
 	end
+
+	return realItemLevel
 end
 
 function Stuffing:SlotUpdate(b)
@@ -238,61 +189,11 @@ function Stuffing:SlotUpdate(b)
 	end
 
 	if clink then
-		b.name, _, _, b.itemlevel, b.level, _, _, _, _, _, _, b.itemClassID = GetItemInfo(clink)
+		b.name, _, _, b.itemlevel, b.level, _, _, _, _, _, _, b.itemClassID, b.itemSubClassID = GetItemInfo(clink)
 
-		if C.bag.ilvl == true and b.itemlevel and quality > 1 and (b.itemClassID == 2 or b.itemClassID == 4) then
-			if quality == 7 and b.itemlevel == 1 then
-				local id = tonumber(strmatch(clink, "item:(%d+)"))
-				b.frame.text:SetText(BOALevel(T.level, id))
-			elseif b.itemlevel > 1 then
-				local tid = strmatch(clink, ".+:512:22.+:(%d+):100")
-				if timewarped[tid] then
-					b.itemlevel = timewarped[tid]
-				end
-
-				local uid = strmatch(clink, ".+:(%d+)")
-				if upgrades[uid] then
-					b.itemlevel = b.itemlevel + upgrades[uid]
-				end
-
-				local numBonusIDs = tonumber(strmatch(clink, ".+:%d+:512:%d*:(%d+):"))
-				if numBonusIDs then
-					if numBonusIDs == 1 then
-						local bid1, levelLootedAt = strmatch(clink, ".+:%d+:512:%d*:%d+:(%d+):(%d+):")
-						if legionUpgrades[bid1] == nil then
-							b.itemlevel = GetItemLevel(clink) or b.itemlevel
-							--print("|cffff0000WARNING: Unkhown item bonus ID: " .. bid1 .. ". Item: " .. clink)
-							--print(clink)
-							--local printable = gsub(clink, "\124", "\124\124");
-							--ChatFrame1:AddMessage("Itemlink: \"" .. printable .. "\"");
-						else
-							b.itemlevel = legionUpgrades[bid1] + (levelLootedAt - 100) * 10
-						end
-					elseif numBonusIDs == 2 then
-						local bid1, bid2, levelLootedAt = strmatch(clink, ".+:%d+:512:%d*:%d+:(%d+):(%d+):(%d+):")
-						if legionUpgrades[bid1] == nil then
-							b.itemlevel = GetItemLevel(clink) or b.itemlevel
-							--print("|cffff0000WARNING: Unkhown item bonus ID: " .. bid1 .. ". Item: " .. clink)
-						elseif legionUpgrades[bid2] == nil then
-							b.itemlevel = GetItemLevel(clink) or b.itemlevel
-							--print("|cffff0000WARNING: Unkhown item bonus ID: " .. bid2 .. ". Item: " .. clink)
-						else
-							if legionUpgrades[bid1] > legionUpgrades[bid2] then
-								b.itemlevel = legionUpgrades[bid1] + (levelLootedAt - 100) * 10
-							else
-								b.itemlevel = legionUpgrades[bid2] + (levelLootedAt - 100) * 10
-							end
-						end
-					end
-				end
-
-				local artifact = tonumber(strmatch(clink, ".+:(256):"))
-				if artifact then
-					b.itemlevel = GetItemLevel(clink) or b.itemlevel
-				end
-
-				b.frame.text:SetText(b.itemlevel)
-			end
+		if C.bag.ilvl == true and b.itemlevel and quality > 1 and (b.itemClassID == 2 or b.itemClassID == 4 or (b.itemClassID == 3 and b.itemSubClassID == 11)) then
+			b.itemlevel = _getRealItemLevel(clink) or b.itemlevel
+			b.frame.text:SetText(b.itemlevel)
 		end
 
 		if (IsItemUnusable(clink) or b.level and b.level > T.level) and not locked then
@@ -1382,9 +1283,10 @@ function Stuffing:SortBags()
 					local newItem = {}
 
 					local n, _, q, iL, rL, c1, c2, _, Sl = GetItemInfo(itemLink)
-					if n == GetItemInfo(6948) then c1 = "1" end	-- Hearthstone
-					if n == GetItemInfo(110560) then c1 = "12" end	-- Garrison Hearthstone
-					if n == GetItemInfo(64488) then c1 = "1" end	-- The Innkeeper's Daughter
+					-- Hearthstone
+					if n == GetItemInfo(6948) or n == GetItemInfo(110560) then
+						q = 9
+					end
 					-- Fix for battle pets
 					if not n then
 						n = itemLink
